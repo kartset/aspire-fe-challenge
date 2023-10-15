@@ -2,7 +2,7 @@
     <div style="background-color: #0C365A;" >
         <div class="row justify-end q-pt-none">
             <div class="q-pr-sm q-pt-none" >
-                <img src="../assets/logo.ico" height="50" width="50" />
+                <img src="public/logo.ico" height="50" width="50" />
             </div>
         </div>
         <div class="row justify-start q-pl-md q-pt-none" >

@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 
-import type { formStateProps } from '@/views/HomeView.vue';
+import type { formStateProps } from '@/views/MobileHomeView.vue';
 
 const props = defineProps<{card:formStateProps}>()
 

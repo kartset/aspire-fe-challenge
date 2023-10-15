@@ -126,7 +126,7 @@
 <script setup lang="ts">
 import { useCardsStore } from '@/stores/cards';
 import { detectCardType } from '@/utils/helper';
-import type { formStateProps } from '@/views/HomeView.vue';
+import type { formStateProps } from '@/views/MobileHomeView.vue';
 import { reactive, ref, toRaw } from 'vue';
 import { isMobile } from '@/utils/helper';
 

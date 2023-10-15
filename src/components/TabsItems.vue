@@ -15,7 +15,7 @@
 
 <script lang="ts" setup>
 import { useTabsStore } from '@/stores/tabs';
-import type { TabProps } from '@/views/HomeView.vue';
+import type { TabProps } from '@/views/MobileHomeView.vue';
 import { storeToRefs } from 'pinia';
 import { isMobile } from '@/utils/helper';
 

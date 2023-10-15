@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { formStateProps } from '@/views/HomeView.vue'
+import type { formStateProps } from '@/views/MobileHomeView.vue'
 import { useQuasar } from 'quasar'
 import { useModalStore } from './modal'
 

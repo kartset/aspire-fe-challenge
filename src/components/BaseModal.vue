@@ -1,6 +1,6 @@
 <template>
-    <q-dialog :maximized="isMobile()" transition-show="slide-up" transition-hide="slide-down" v-model="modal" persistent>
-        <q-card style="min-width: 350px">
+    <q-dialog :maximized="type == 'xs'"  transition-show="slide-up" transition-hide="slide-down" v-model="modal" persistent>
+        <q-card style="width: 35vw">
             <q-card-section class="row items-center">
                 <div class="text-h6">Add New Card</div>
                 <q-space />
@@ -24,11 +24,13 @@
 import { useModalStore } from '@/stores/modal';
 import { storeToRefs } from 'pinia';
 import AddNewCardForm from './AddNewCardForm.vue';
-import { isMobile } from '@/utils/helper';
+import { useBreakpoints } from '@/utils/composables/useBreakpoints';
 
 
 
 const { modal } = storeToRefs(useModalStore())
+const { type } = useBreakpoints()
+
 
 </script>
 

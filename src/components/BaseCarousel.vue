@@ -12,7 +12,7 @@
         padding
         height="260px"
         class="text-white rounded-borders"
-        :class="{'bg-brand':isMobile()}"
+        :class="{'bg-brand':type == 'xs'}"
     >
         <template v-slot:navigation-icon="{ active, btnProps, onClick }">
             <q-icon style="width: 2em;height:0.75em;font-size:12px;margin:0px;padding:0px" v-if="active" @click="onClick" name="img:rect.svg" />
@@ -29,10 +29,13 @@
 import { useCardsStore } from '@/stores/cards';
 import { storeToRefs } from 'pinia';
 import CreditCard from './CreditCard.vue';
-import { isMobile } from '@/utils/helper';
+import { useBreakpoints } from '@/utils/composables/useBreakpoints';
+
 
 const { cards, currentCard } = storeToRefs(useCardsStore())
 const { setCurrentCard } = useCardsStore()
+const { type } = useBreakpoints()
+
 
 </script>
 

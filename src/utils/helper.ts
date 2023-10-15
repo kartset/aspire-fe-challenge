@@ -34,14 +34,3 @@ export function detectCardType(number: string) {
         }
     }
 }
-
-
-export const isMobile = () => {
-    if( screen.width <= 760 ) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-  

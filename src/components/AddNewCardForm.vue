@@ -7,13 +7,15 @@
     >
         <q-input 
             lazy-rules 
-            :rules="[ val => val && val.length > 0 || 'Required']" 
+            autofocus
+            :rules="[ val => (val && (val.split(' ').join('')).length == 16) || 'Required. Expiry Date and CVV will generate after card number input']" 
             filled  
             label="Enter Credit Card Number *" 
             v-model="reactiveFormState.cardNumber" 
             :dense="true"
             type="text"
             @update:model-value="(value) => detectCardTypeWrapper(value)"
+            @blur="() => random_generation(reactiveFormState.cardNumber)"
         >
             <template v-slot:append>
                 <i v-if="cardValue === 'mastercard'" class="fa-brands fa-cc-mastercard fa-bounce "></i>
@@ -33,6 +35,7 @@
                 label="Expiry Date*"
                 lazy-rules
                 dense
+                readonly
                 @update:model-value="(value) => cc_expires_format(String(value))"
                 :rules="[
                     val => val !== null && val !== '' || 'Required',
@@ -41,18 +44,37 @@
             />
             <q-input
                 filled
-                type="number"
+                :type="(showCVV == false) ? 'password' : 'text'"
                 v-model="reactiveFormState.cvv"
                 label="CVV *"
                 lazy-rules
                 dense
+                readonly
                 :rules="[
                     val => val !== null && val !== '' || 'Required',
                     val => val > 0 && val < 999 || 'Wrong CVV'
                 ]"
                 :input-style="{width:type == 'xs' ? '30vw' : '11vw'}"
 
-            />
+            >
+                <template v-slot:append>
+                    <i 
+                        v-if="showCVV===false" 
+                        @click="() => {showCVV = !showCVV}" 
+                        class="fa-regular fa-eye"
+                    >
+                        <q-tooltip>Show CVV</q-tooltip>
+                    </i>
+                    <i 
+                        v-if="showCVV===true" 
+                        @click="() => {showCVV = !showCVV}" 
+                        class="fa-regular fa-eye-slash"
+                    >
+                        <q-tooltip>Hide CVV</q-tooltip>
+                    </i>
+
+                </template>
+            </q-input>
         </div>
         <q-input
             filled
@@ -154,6 +176,7 @@ const { addNewCard } = useCardsStore()
 const cardValue = ref<string | undefined>('no-value')
 const reactiveFormState:formStateProps = reactive(initialFormState)
 const { type } = useBreakpoints()
+const showCVV = ref<boolean>(false)
 
 const addNewCardWrapper = () => {
     let payload = toRaw(reactiveFormState)
@@ -187,6 +210,20 @@ function cc_number_format(value:string) {
         return parts.join(' ')
     } else {
         return value
+    }
+}
+ 
+function random_generation(cardNumber:string) {
+    console.log({cardNumber})
+    if((cardNumber.split(' ').join('')).length == 16) {
+        const CVV = (Math.floor(Math.random() * 9) + 1 + "")
+        .concat(Math.floor(Math.random() * 9) + 1 + "")
+        .concat(Math.floor(Math.random() * 9) + 1 + "");
+    const exp_year = String(new Date().getFullYear() + Math.floor(Math.random() * 4) + 1);
+    const exp_month = String(Math.floor(Math.random() * 12) + 1)
+
+    reactiveFormState.cvv = CVV
+    reactiveFormState.expiryDate = exp_month + '/' + exp_year.slice(exp_year.length-2, exp_year.length)
     }
 }
 

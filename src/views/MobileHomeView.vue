@@ -25,6 +25,28 @@
             <BaseModal />
             <BottomSheet />
         </div>
+        <q-card class=" row justify-center items-center mobile-nav q-px-md">
+            <div style="flex:1;text-align:center" class="col justify-center items-end">
+                <q-icon style="font-size:25px;" name="img:logo.svg" />
+                <p style="color: #DDDDDD;font-size:10px;" >Home</p>
+            </div>
+            <div style="flex:1;text-align:center" class="col justify-center items-end">
+                <q-icon style="font-size:25px;" name="img:pay_selected.svg"  />
+                <p style="color: #DDDDDD;font-size:10px;" >Cards</p>
+            </div>
+            <div style="flex:1;text-align:center" class="col justify-center items-end">
+                <q-icon style="font-size:25px;" name="img:payments_new.svg"  />
+                <p style="color: #DDDDDD;font-size:10px;" >Payments</p>
+            </div>
+            <div style="flex:1;text-align:center" class="col justify-center items-end">
+                <q-icon style="font-size:25px;" name="img:credit_new.svg"  />
+                <p style="color: #DDDDDD;font-size:10px;">Credit</p>
+            </div>
+            <div style="flex:1;text-align:center" class="col justify-center items-end">
+                <q-icon style="font-size:25px;" name="img:settings_new.svg" />
+                <p style="color: #DDDDDD;font-size:10px;">Settings</p>
+            </div>
+        </q-card>
     </div>
 </template>
 
@@ -84,4 +106,15 @@ watchEffect(() => setCurrentTab(tabs[0].name))
 .bg-brand {
     background: #0C365A !important;
 }
+
+.mobile-nav {
+    position: fixed;
+    bottom: 0;
+    height: 65px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 100;
+}
+
 </style>

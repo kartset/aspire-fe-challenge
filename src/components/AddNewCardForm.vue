@@ -214,7 +214,6 @@ function cc_number_format(value:string) {
 }
  
 function random_generation(cardNumber:string) {
-    console.log({cardNumber})
     if((cardNumber.split(' ').join('')).length == 16) {
         const CVV = (Math.floor(Math.random() * 9) + 1 + "")
         .concat(Math.floor(Math.random() * 9) + 1 + "")

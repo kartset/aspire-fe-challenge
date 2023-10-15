@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import DesktopHomeView from '../views/DesktopHomeView.vue'
-import { isMobile } from '@/utils/helper'
+import  CurrentHomeView from '../views/CurrentHomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,7 +7,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: isMobile() ? HomeView : DesktopHomeView
+      component: CurrentHomeView
     },
   ]
 })

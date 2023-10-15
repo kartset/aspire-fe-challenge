@@ -18,12 +18,12 @@
                     >
                         {{ (props.listItem.type == 'credit' ? '+' : '-') + 'S$' +  props.listItem.expense }}
                     </p>
-                    <q-icon name="img:/src/assets/next.svg" />
+                    <q-icon name="img:src/assets/next.svg" />
                 </div>
             </div>
             <div style="margin-top: 7px;" class="row justify-start items-center" >
                 <q-avatar size="24px" style="background-color:#325BAF;" >
-                    <q-icon style="font-size: 10px;" name="img:/src/assets/business-and-finance.svg" />
+                    <q-icon style="font-size: 10px;" name="img:src/assets/business-and-finance.svg" />
                 </q-avatar>
                 <div style="margin-left:8px;font-size:12px;color:#4F72BA;font-weight:500" >{{ props.listItem.comment }}</div>
             </div>

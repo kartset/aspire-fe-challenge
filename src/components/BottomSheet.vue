@@ -36,7 +36,7 @@ const drawerMinHeight = 275
 const drawerTopOffset = 100
 const drawerOpenRatioHalf = 50
 const drawerPos = ref(drawerMinHeight)
-const animateTimeout = ref(0)
+const animateTimeout = ref<any>(null)
 
 
 let items = [

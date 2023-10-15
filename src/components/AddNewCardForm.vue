@@ -37,7 +37,7 @@
                 :rules="[
                     val => val !== null && val !== '' || 'Required',
                 ]"
-                :input-style="isMobile() ? {width:'30vw'} : {width:'unset'}"
+                :input-style="{width:type == 'xs' ? '30vw' : '11vw'}"
             />
             <q-input
                 filled
@@ -50,7 +50,7 @@
                     val => val !== null && val !== '' || 'Required',
                     val => val > 0 && val < 999 || 'Wrong CVV'
                 ]"
-                :input-style="isMobile() ? {width:'30vw'} : {width:'unset'}"
+                :input-style="{width:type == 'xs' ? '30vw' : '11vw'}"
 
             />
         </div>
@@ -92,7 +92,7 @@
                 label="City"
                 lazy-rules
                 dense
-                input-style="width:30vw"
+                :input-style="{width:type == 'xs' ? '30vw' : '11vw'}"
             />
             <q-input
                 filled
@@ -101,7 +101,8 @@
                 label="State"
                 lazy-rules
                 dense
-                input-style="width:30vw"
+                :input-style="{width:type == 'xs' ? '30vw' : '11vw'}"
+
             />
         </div>
         <q-input
@@ -125,11 +126,10 @@
 
 <script setup lang="ts">
 import { useCardsStore } from '@/stores/cards';
+import { useBreakpoints } from '@/utils/composables/useBreakpoints';
 import { detectCardType } from '@/utils/helper';
 import type { formStateProps } from '@/views/MobileHomeView.vue';
 import { reactive, ref, toRaw } from 'vue';
-import { isMobile } from '@/utils/helper';
-
 
 
 const initialFormState = {
@@ -153,6 +153,7 @@ const initialFormState = {
 const { addNewCard } = useCardsStore()
 const cardValue = ref<string | undefined>('no-value')
 const reactiveFormState:formStateProps = reactive(initialFormState)
+const { type } = useBreakpoints()
 
 const addNewCardWrapper = () => {
     let payload = toRaw(reactiveFormState)

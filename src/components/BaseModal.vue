@@ -1,6 +1,6 @@
 <template>
     <q-dialog :maximized="type == 'xs'"  transition-show="slide-up" transition-hide="slide-down" v-model="modal" persistent>
-        <q-card style="width: 35vw">
+        <q-card :style=" type != 'xs'  && {width: '35vw'}">
             <q-card-section class="row items-center">
                 <div class="text-h6">{{ currentFormId == 'add_card' ? 'Add New Card' : 'Delete Card'}}</div>
                 <q-space />
@@ -34,8 +34,6 @@ import AddNewCardForm from './AddNewCardForm.vue';
 import { useBreakpoints } from '@/utils/composables/useBreakpoints';
 import { useFormStore } from '@/stores/forms';
 import { useCardsStore } from '@/stores/cards';
-
-
 
 const { modal } = storeToRefs(useModalStore())
 const { currentFormId } = storeToRefs(useFormStore())

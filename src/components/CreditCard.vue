@@ -1,7 +1,7 @@
 <template>
     <q-card style="border-radius:15px;" class="my-card" :class="{freeze_green:props.card.freezed, bg_green:!props.card.freezed}">
         <q-card-section>
-            <div class="row justify-end" ><img src="/src/assets/aspire_logo_full.svg" /></div>
+            <div class="row justify-end" ><img src="/public/aspire_logo_full.svg" /></div>
             <div class="column" style="margin-top: 5px;" >
                 <div><p style="font-size:22px;font-weight:550" >{{props.card.cardHolderName}}</p></div>
                 <div class="credit-card visa selectable"><div class="credit-card-last4">
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="row justify-end" >
-                <img src="/src/assets/visa_logo.svg" />
+                <img src="/public/visa_logo.svg" />
             </div>
         </q-card-section>
     </q-card>

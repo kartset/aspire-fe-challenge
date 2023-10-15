@@ -1,7 +1,7 @@
 <template>
     <div style="flex:1.5;background-color:#0C365A;" class="column q-mr-xl">
         <div style="flex:2" class="column justify-center items-start q-gutter-md q-px-lg" >
-            <img src="../assets/aspire_logo_full_green.svg" />
+            <img src="public/aspire_logo_full_green.svg" />
             <p style="color:white;opacity:0.3;text-align:start;font-size:13px" >
                 Trusted way of banking for 3,000+ SMEs and startups in Singapore
             </p>
@@ -20,27 +20,27 @@
 const sidebarTabs = [
     {
         name:'Home',
-        icon: 'img:src/assets/home.svg',
+        icon: 'img:public/home.svg',
         selected: false
     },
     {
         name: 'Cards',
-        icon:'img:src/assets/pay_selected.svg',
+        icon:'img:public/pay_selected.svg',
         selected:true,
     },
     {
         name:'Payments',
-        icon: 'img:src/assets/payments.svg',
+        icon: 'img:public/payments.svg',
         selected: false
     },
     {
         name:'Credit',
-        icon: 'img:src/assets/credit.svg',
+        icon: 'img:public/credit.svg',
         selected: false
     },
     {
         name:'Settings',
-        icon: 'img:src/assets/settings.svg',
+        icon: 'img:public/settings.svg',
         selected: false
     },
 ]

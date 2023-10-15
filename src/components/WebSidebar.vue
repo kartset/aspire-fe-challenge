@@ -1,7 +1,7 @@
 <template>
     <div style="flex:1.5;background-color:#0C365A;" class="column q-mr-xl">
         <div style="flex:2" class="column justify-center items-start q-gutter-md q-px-lg" >
-            <img src="public/aspire_logo_full_green.svg" />
+            <img src="/public/aspire_logo_full_green.svg" />
             <p style="color:white;opacity:0.3;text-align:start;font-size:13px" >
                 Trusted way of banking for 3,000+ SMEs and startups in Singapore
             </p>

@@ -1,7 +1,8 @@
 <template>
-    <div style="height:100vh;width:100vw;" class="row" >
+    <div style="height:100vh;width:100vw;display: flex;">
         <WebSidebar />
         <div style="flex:6" class="column justify-center q-mx-xl" >
+            <main class="scrollbar-hidden" >
             <div class="column" >
                 <div><p class="q-mb-none" >Available Balance</p></div>
                 <div class="row justify-between ">
@@ -32,7 +33,8 @@
                     </div>
                 </q-card>
             </div>
-        </div>
+        </main>
+            </div>
         <BaseModal />
     </div>
 </template>
@@ -82,9 +84,8 @@ watchEffect(() => setCurrentTab(tabs[0].name))
 
 <style lang="scss" scoped>
 
-.my-card {
-    width: 100%;
-    max-width: 250px
+main {
+    overflow-y: auto;
 }
 
 .scrollbar-hidden::-webkit-scrollbar {

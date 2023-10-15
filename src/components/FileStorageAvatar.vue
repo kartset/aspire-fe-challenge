@@ -1,6 +1,6 @@
 <template>
     <q-avatar size="48px" style="background-color:#009DFF1A ;" >
-        <q-icon size="xs" name="img:public/file_storage.svg" />
+        <q-icon size="xs" name="img:file_storage.svg" />
     </q-avatar>
 </template>
 

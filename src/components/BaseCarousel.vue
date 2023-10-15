@@ -15,7 +15,7 @@
         :class="{'bg-brand':isMobile()}"
     >
         <template v-slot:navigation-icon="{ active, btnProps, onClick }">
-            <q-icon style="width: 2em;height:0.75em;font-size:12px;margin:0px;padding:0px" v-if="active" @click="onClick" name="img:public/rect.svg" />
+            <q-icon style="width: 2em;height:0.75em;font-size:12px;margin:0px;padding:0px" v-if="active" @click="onClick" name="img:rect.svg" />
             <q-btn style="color: #0B455C;margin:0px;padding:0px;font-size:8px" v-else :icon="btnProps.icon" flat round dense @click="onClick" />
             
         </template>

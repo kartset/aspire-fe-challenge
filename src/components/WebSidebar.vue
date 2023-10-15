@@ -20,27 +20,27 @@
 const sidebarTabs = [
     {
         name:'Home',
-        icon: 'img:public/home.svg',
+        icon: 'img:home.svg',
         selected: false
     },
     {
         name: 'Cards',
-        icon:'img:public/pay_selected.svg',
+        icon:'img:pay_selected.svg',
         selected:true,
     },
     {
         name:'Payments',
-        icon: 'img:public/payments.svg',
+        icon: 'img:payments.svg',
         selected: false
     },
     {
         name:'Credit',
-        icon: 'img:public/credit.svg',
+        icon: 'img:credit.svg',
         selected: false
     },
     {
         name:'Settings',
-        icon: 'img:public/settings.svg',
+        icon: 'img:settings.svg',
         selected: false
     },
 ]

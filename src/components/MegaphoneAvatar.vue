@@ -1,6 +1,6 @@
 <template>
     <q-avatar size="48px" style="background-color:#FEEDF4 ;" >
-        <q-icon size="xs" name="img:public/megaphone.svg" />
+        <q-icon size="xs" name="img:megaphone.svg" />
     </q-avatar>
 </template>
 

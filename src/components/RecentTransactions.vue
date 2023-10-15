@@ -4,6 +4,9 @@
             <TransactionListItem :listItem="item" />
             <q-separator style="background-color: #DDDDDD;" />
         </q-card-section>
+        <div style="color:#01D167;background-color:#DDFFEC;text-align:center" class="q-pa-md" >
+            View All Transcations
+        </div>
     </q-card>
 </template>
 

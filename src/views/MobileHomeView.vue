@@ -16,7 +16,7 @@
                 <div class="text-white q-pt-none text-weight-bold" > 3,000</div>
             </div>
             <div class="q-pr-sm q-pt-none">
-                <q-btn @click="toggleModal" size="sm" unelevated no-caps text-color="blue" icon="add_circle" flat>New card</q-btn>
+                <q-btn @click="() => {toggleModal();setCurrentFormId('add_card')}" size="sm" unelevated no-caps text-color="blue" icon="add_circle" flat>New card</q-btn>
             </div>
         </div>
         <div class="q-pt-md" >
@@ -37,6 +37,7 @@ import BaseModal from '@/components/BaseModal.vue'
 import { useModalStore } from '@/stores/modal'
 import { storeToRefs } from 'pinia'
 import { useTabsStore } from '@/stores/tabs'
+import { useFormStore } from '@/stores/forms'
 
 
 export interface TabProps {
@@ -73,6 +74,7 @@ const tabs:TabProps[] = [
 const { setCurrentTab } = useTabsStore()
 const { currentTab } = storeToRefs(useTabsStore())
 const { toggleModal } = useModalStore()
+const { setCurrentFormId } = useFormStore()
 
 watchEffect(() => setCurrentTab(tabs[0].name))
 

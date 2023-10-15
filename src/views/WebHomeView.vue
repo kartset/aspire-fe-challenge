@@ -13,7 +13,7 @@
                             <div class="text-black text-h5 text-weight-bold" > 3,000</div>
                         </div>
                         <div class="q-pr-sm">
-                            <q-btn @click="toggleModal" style="background-color: #325BAF;" size="md" no-caps text-color="white" icon="add_circle">New card</q-btn>
+                            <q-btn @click="() => {toggleModal();setCurrentFormId('add_card')}" style="background-color: #325BAF;" size="md" no-caps text-color="white" icon="add_circle">New card</q-btn>
                         </div>
                     </div>
                 </div>
@@ -53,6 +53,7 @@ import RecentTransactions from '@/components/RecentTransactions.vue';
 import LoremIpsum from '@/components/LoremIpsum.vue'
 import ExpansionItem from '@/components/ExpansionItem.vue';
 import { useModalStore } from '@/stores/modal'
+import { useFormStore } from '@/stores/forms'
 
 const tabs:TabProps[] = [
     { name: 'my-debit-cards', label:'My debit cards' },
@@ -74,6 +75,7 @@ let items = [
 const { currentTab } = storeToRefs(useTabsStore())
 const { setCurrentTab } = useTabsStore()
 const { toggleModal } = useModalStore()
+const { setCurrentFormId } = useFormStore()
 
 
 watchEffect(() => setCurrentTab(tabs[0].name))

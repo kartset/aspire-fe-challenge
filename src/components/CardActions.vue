@@ -15,7 +15,7 @@
         <q-icon size="sm" name="img:replace_card.svg" />
         <p class="wrap font-class " >Replace Card</p>
     </div>
-    <div @click="deleteCard(currentCardId)" style="text-align: center;" class="col q-gutter-sm" >
+    <div @click="() =>{setCurrentFormId('delete_card');toggleModal()}" style="text-align: center;" class="col q-gutter-sm" >
         <q-icon size="sm" name="img:deactivate_card.svg" />
         <p class="wrap font-class " >Cancel Card</p>
     </div>
@@ -23,14 +23,18 @@
 
 <script lang="ts" setup>
 import { useCardsStore } from '@/stores/cards';
+import { useFormStore } from '@/stores/forms';
+import { useModalStore } from '@/stores/modal';
 import { storeToRefs } from 'pinia';
 import { useQuasar } from 'quasar';
 import { ref, watchEffect } from 'vue';
 
 const $q = useQuasar()
-const { deleteCard, freezeCard } = useCardsStore()
+const { freezeCard } = useCardsStore()
 const { cards, currentCard:currentCardId } = storeToRefs(useCardsStore())
 const freeze_card_string = ref('')
+const { toggleModal } = useModalStore()
+const { setCurrentFormId } = useFormStore()
 
 watchEffect(() => {
     try {

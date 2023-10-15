@@ -81,16 +81,26 @@ export const useCardsStore = defineStore('cards', () => {
     }
 
     const deleteCard = (id:string) => {
-        cards.value = cards.value.filter((card) => card.id != id)
-        if(cards.value.length > 0) {
-            setCurrentCard(cards.value[0].id)
+        try {
+            cards.value = cards.value.filter((card) => card.id != id)
+            if(cards.value.length > 0) {
+                setCurrentCard(cards.value[0].id)
+            }
+            toggleModal()
+            $q.notify({
+                color: 'green-4',
+                textColor: 'white',
+                icon: 'cloud_done',
+                message: 'Card Deleted Successfully'
+            })
+        } catch (error:any) {
+            $q.notify({
+                color: 'green-4',
+                textColor: 'white',
+                icon: 'cloud_done',
+                message: error.message
+            })
         }
-        $q.notify({
-            color: 'green-4',
-            textColor: 'white',
-            icon: 'cloud_done',
-            message: 'Card Deleted Successfully'
-        })
 
     }
 
@@ -105,6 +115,12 @@ export const useCardsStore = defineStore('cards', () => {
                 }
                 return card
             })
+            $q.notify({
+                color: 'green-4',
+                textColor: 'white',
+                icon: 'cloud_done',
+                message: 'Card Freezed Successfully'
+            })
         } catch (error:any) {
             $q.notify({
                 color: 'red-4',
@@ -115,5 +131,9 @@ export const useCardsStore = defineStore('cards', () => {
         }
     }
 
-  return { currentCard, setCurrentCard, cards, addNewCard, deleteCard, freezeCard }
+    return { 
+        cards, currentCard, 
+        setCurrentCard, addNewCard, deleteCard, 
+        freezeCard 
+    }
 })

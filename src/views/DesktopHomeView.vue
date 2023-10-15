@@ -60,12 +60,12 @@ const tabs:TabProps[] = [
 let items = [
     {
         label: 'Card Details',
-        icon: "img:src/assets/card_details.svg",
+        icon: "img:/src/assets/card_details.svg",
         content: LoremIpsum
     },
     {
         label: 'Recent Transcations',
-        icon: "img:src/assets/recent_trans.svg",
+        icon: "img:/src/assets/recent_trans.svg",
         content: RecentTransactions
     }
 ]

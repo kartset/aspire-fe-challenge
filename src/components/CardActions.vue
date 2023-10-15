@@ -8,7 +8,7 @@
         <p class="wrap font-class ">Set Spend Limit</p>
     </div>
     <div class="col q-gutter-sm" style="text-align: center;">
-        <q-icon size="sm" name="img:../assets/gpay.svg" />
+        <q-icon size="sm" name="img:src/assets/gpay.svg" />
         <p class="wrap font-class " >Add to Gpay</p>
     </div>
     <div class="col q-gutter-sm" style="text-align: center;">

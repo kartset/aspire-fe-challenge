@@ -3,10 +3,19 @@ import { defineStore } from 'pinia'
 
 export const useExpansionStore = defineStore('expansion', () => {
     
-    const expand=  ref(false)
+    const recentTransactionExpand=  ref(false)
+    const cardDetailsExpand = ref(false)
 
-    const toggleExpand = () => {
-        expand.value = !expand.value
+    const toggleRecentTransactionExpand = () => {
+        recentTransactionExpand.value = !recentTransactionExpand.value
     }
-    return { expand, toggleExpand }
+    const toggleCardDetailsExpand = () => {
+        cardDetailsExpand.value = !cardDetailsExpand.value
+    }
+
+
+    return { 
+        recentTransactionExpand, cardDetailsExpand, 
+        toggleRecentTransactionExpand, toggleCardDetailsExpand 
+    }
 })

@@ -29,6 +29,10 @@ import CardActions from './CardActions.vue';
 import ExpansionItem from './ExpansionItem.vue';
 import RecentTransactions from './RecentTransactions.vue';
 import LoremIpsum from './LoremIpsum.vue'
+import { useExpansionStore } from '@/stores/expension';
+import { storeToRefs } from 'pinia';
+const { toggleCardDetailsExpand, toggleRecentTransactionExpand } = useExpansionStore()
+const { cardDetailsExpand, recentTransactionExpand } = storeToRefs(useExpansionStore())
 
 
 const $q = useQuasar()
@@ -43,12 +47,16 @@ let items = [
     {
         label: 'Card Details',
         icon: "img:card_details.svg",
-        content: LoremIpsum
+        content: LoremIpsum,
+        expand:cardDetailsExpand,
+        toggleExpand: toggleCardDetailsExpand
     },
     {
         label: 'Recent Transcations',
         icon: "img:recent_trans.svg",
-        content: RecentTransactions
+        content: RecentTransactions,
+        expand: recentTransactionExpand,
+        toggleExpand: toggleRecentTransactionExpand
     }
 ]
 

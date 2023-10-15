@@ -1,9 +1,10 @@
 <template>
     <q-expansion-item
-        v-model="expand"
+        :model-value="props.item.expand.value"
         :icon="props.item.icon"
         :label="props.item.label"
         dense
+        @update:model-value="() => props.item.toggleExpand()"
         expand-icon="img:down-arrow.svg"
         expanded-icon="img:up-arrow.svg"
         header-style="color:#0C365A;border-radius:15px;background-color:#FAFCFF;padding:15px;font-size:14px;text-align:left;font-weight:450"                                                    
@@ -15,12 +16,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useExpansionStore } from '@/stores/expension';
-import { storeToRefs } from 'pinia';
 
 const props = defineProps<{item:any}>()
-
-const { expand } = storeToRefs(useExpansionStore())
 
 </script>
 

@@ -54,28 +54,38 @@ import LoremIpsum from '@/components/LoremIpsum.vue'
 import ExpansionItem from '@/components/ExpansionItem.vue';
 import { useModalStore } from '@/stores/modal'
 import { useFormStore } from '@/stores/forms'
+import { useExpansionStore } from '@/stores/expension'
 
 const tabs:TabProps[] = [
     { name: 'my-debit-cards', label:'My debit cards' },
     { name: 'all-company-cards', label: 'All company cards'}
 ]
 
-let items = [
-    {
-        label: 'Card Details',
-        icon: "img:card_details.svg",
-        content: LoremIpsum
-    },
-    {
-        label: 'Recent Transcations',
-        icon: "img:recent_trans.svg",
-        content: RecentTransactions
-    }
-]
 const { currentTab } = storeToRefs(useTabsStore())
 const { setCurrentTab } = useTabsStore()
 const { toggleModal } = useModalStore()
 const { setCurrentFormId } = useFormStore()
+const { toggleCardDetailsExpand, toggleRecentTransactionExpand } = useExpansionStore()
+const { cardDetailsExpand, recentTransactionExpand } = storeToRefs(useExpansionStore())
+
+
+let items = [
+    {
+        label: 'Card Details',
+        icon: "img:card_details.svg",
+        content: LoremIpsum,
+        expand:cardDetailsExpand,
+        toggleExpand: toggleCardDetailsExpand
+    },
+    {
+        label: 'Recent Transcations',
+        icon: "img:recent_trans.svg",
+        content: RecentTransactions,
+        expand: recentTransactionExpand,
+        toggleExpand: toggleRecentTransactionExpand
+    }
+]
+
 
 
 watchEffect(() => setCurrentTab(tabs[0].name))

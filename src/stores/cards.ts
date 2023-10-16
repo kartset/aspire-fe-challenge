@@ -3,15 +3,21 @@ import { defineStore } from 'pinia'
 import type { formStateProps } from '@/views/MobileHomeView.vue'
 import { useQuasar } from 'quasar'
 import { useModalStore } from './modal'
+import { STATUS } from '@/utils/status'
 
+//This is a pinia store to manage states regarding to the credit card 
+//operationns (add, delete freeze)
 export const useCardsStore = defineStore('cards', () => {
-    const $q = useQuasar()
-    const modalStore = useModalStore()
-    const { toggleModal } = modalStore
-    const cards = ref<formStateProps[]>([
+    
+    const $q = useQuasar()  //initialising an instance
+    const { toggleModal } = useModalStore() //importing toggleModal function from another store
+    
+    // this is the cards array where are the card data is being stored for now, 
+    //initially it has 2 cards for UI
+    const cards = ref<formStateProps[]>([   
         {
-            id: '1',
-            cardNumber: '4687790028237293',
+            id: '1', //unique id
+            cardNumber: '4687790028237293', //unique card number
             expiryDate:'10/27',
             cvv:'077',
             cardHolderName: "Card Holder",
@@ -42,35 +48,52 @@ export const useCardsStore = defineStore('cards', () => {
             freezed: true
         }
     ])
-    const currentCard = ref(cards.value[0].id)
 
-    const setCurrentCard = (id:string) => {
+    // this is a pointer to the current card shown in the carousel, 
+    // we need this pointer to find and take actions for that specific 
+    // card when it is on screen/selected
+    const currentCard = ref(cards.value[0].id)
+    
+    //status variable for add new card
+    const addNewCardSTATUS = ref(STATUS.NOT_STARTED)
+
+    const setCurrentCard = (id:string) => { //setter for the currentCardId
         currentCard.value = id
     }
     
-    const addNewCard = (cardDetails:formStateProps) => {
+    //function to add a new card and it'll be added to the carousel
+    const addNewCard = async (cardDetails:formStateProps) => {    
     
         try {
-            
+            //checks for if there exist any card for same card number
             const existingCard = cards.value.filter((card) => card.cardNumber == cardDetails.cardNumber)
             
             if(existingCard.length > 0) {
                 throw new Error('Card Already Exist')
             }
 
-            cards.value = [...cards.value, cardDetails]
-            
-            toggleModal()
-            
-            $q.notify({
-                color: 'green-4',
-                textColor: 'white',
-                icon: 'cloud_done',
-                message: 'Submitted'
+            addNewCardSTATUS.value = STATUS.LOADING
+            await new Promise((resolve, reject) => { // resolving a promise
+                setTimeout(() => {  //making it an async operation
+                    cards.value = [...cards.value, cardDetails]
+                    addNewCardSTATUS.value = STATUS.SUCCESS
+                    toggleModal()
+                    resolve('')
+                }, 3000)
+            }).then(() => {
+                $q.notify({
+                    color: 'green-4',
+                    textColor: 'white',
+                    icon: 'cloud_done',
+                    message: 'Submitted'
+                })
             })
 
         } catch (error:any) {
-            
+            //if there is any error status is failed, modal will get closed and 
+            // error toast will be shown
+            toggleModal()
+            addNewCardSTATUS.value = STATUS.FAILED 
             $q.notify({
                 color: 'red-4',
                 textColor: 'white',
@@ -80,6 +103,7 @@ export const useCardsStore = defineStore('cards', () => {
         }
     }
 
+    // for delete a card operation
     const deleteCard = (id:string) => {
         try {
             cards.value = cards.value.filter((card) => card.id != id)
@@ -94,6 +118,7 @@ export const useCardsStore = defineStore('cards', () => {
                 message: 'Card Deleted Successfully'
             })
         } catch (error:any) {
+            toggleModal()
             $q.notify({
                 color: 'green-4',
                 textColor: 'white',
@@ -104,6 +129,7 @@ export const useCardsStore = defineStore('cards', () => {
 
     }
 
+    // for freeze a card operation
     const freezeCard = async (id:string) => {
         try {
             cards.value = cards.value.map((card) => {
@@ -131,8 +157,9 @@ export const useCardsStore = defineStore('cards', () => {
         }
     }
 
+    // returning the states and methods to be used in components 
     return { 
-        cards, currentCard, 
+        cards, currentCard, addNewCardSTATUS,
         setCurrentCard, addNewCard, deleteCard, 
         freezeCard 
     }

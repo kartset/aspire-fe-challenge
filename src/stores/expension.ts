@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 
 export const useExpansionStore = defineStore('expansion', () => {
     
+    //states for expands
     const recentTransactionExpand=  ref(false)
     const cardDetailsExpand = ref(false)
 

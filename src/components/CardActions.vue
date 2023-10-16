@@ -1,4 +1,8 @@
 <template>
+    <!-- 
+        Cards Actions Like freeze card, delete card and etc, 
+        we are importing it in bottomsheet and web home view 
+    -->
     <div @click="freezeCard(currentCardId)" style="text-align: center;" class="col q-gutter-sm" >
         <q-icon size="sm" name="img:freeze_card.svg" />
         <p class="wrap font-class" >{{freeze_card_string}} card</p>

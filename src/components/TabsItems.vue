@@ -7,6 +7,7 @@
         align="left"
         @update:model-value="(value) => setCurrentTab(value)"
     > 
+        <!-- Rending Tabs -->
         <template v-for="tab in props.tabs" :key="tab.name" >
             <q-tab :name="tab.name" :class="{'text-black':type!='xs'}" style="font-size: 8px;" :label="tab.label" />
         </template>

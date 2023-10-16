@@ -7,7 +7,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: CurrentHomeView
+      component: CurrentHomeView    //CurrentHomeView is used to export a home view based on the screen size
     },
   ]
 })

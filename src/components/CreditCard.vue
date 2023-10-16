@@ -1,4 +1,5 @@
 <template>
+    <!-- Credit Card UI -->
     <div class="col" >
         <div class="row" >
             <div style="flex: 1.5;" ></div>

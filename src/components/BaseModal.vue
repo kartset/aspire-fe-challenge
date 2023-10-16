@@ -16,7 +16,7 @@
     
             <q-card-actions v-if="currentFormId == 'add_card'" align="right" class="text-primary">
                 <q-btn flat label="Cancel" v-close-popup />
-                <q-btn :form="currentFormId" label="Submit" type="submit" flat color="primary"/>
+                <q-btn :loading="addNewCardSTATUS == STATUS.LOADING" :form="currentFormId" label="Submit" type="submit" flat color="primary"/>
                 <q-btn :form="currentFormId" label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
             </q-card-actions>
             <q-card-actions v-else-if="currentFormId=='delete_card'" align="right" class="text-primary" >
@@ -34,11 +34,13 @@ import AddNewCardForm from './AddNewCardForm.vue';
 import { useBreakpoints } from '@/utils/composables/useBreakpoints';
 import { useFormStore } from '@/stores/forms';
 import { useCardsStore } from '@/stores/cards';
+import { STATUS } from '@/utils/status'
+
 
 const { modal } = storeToRefs(useModalStore())
 const { currentFormId } = storeToRefs(useFormStore())
 const { type } = useBreakpoints()
-const { currentCard:currentCardId } = storeToRefs(useCardsStore())
+const { addNewCardSTATUS, currentCard:currentCardId } = storeToRefs(useCardsStore())
 const { deleteCard } = useCardsStore()
 
 </script>

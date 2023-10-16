@@ -1,4 +1,5 @@
 <template>
+    <!-- Add New Card Form -->
     <q-form
         @submit="addNewCardWrapper"
         @reset="onReset"

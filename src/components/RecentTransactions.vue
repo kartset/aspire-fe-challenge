@@ -1,7 +1,8 @@
 <template>
     <q-card style="border: 1px solid #F7F7F7;border-radius: 0px 0px 10px 10px;" >
         <q-card-section v-for="(item, i) in recentTransactions" :key="i">
-            <TransactionListItem :listItem="item" />
+            <!-- Single Transaction List Item in a For Loop to render recent transactions list -->
+            <TransactionListItem :listItem="item" /> 
             <q-separator style="background-color: #DDDDDD;" />
         </q-card-section>
         <div style="color:#01D167;background-color:#DDFFEC;text-align:center" class="q-pa-md" >

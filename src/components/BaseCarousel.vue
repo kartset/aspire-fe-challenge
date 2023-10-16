@@ -19,6 +19,7 @@
             <q-btn style="color: #0B455C;margin:0px;padding:0px;font-size:8px" v-else :icon="btnProps.icon" flat round dense @click="onClick" />
             
         </template>
+        <!-- List Rendering For Cards in the Carousel -->
         <q-carousel-slide v-for="(card) in cards" :key="card.cardNumber" :name='card.id' class="column">
             <CreditCard :card="card" />
         </q-carousel-slide>

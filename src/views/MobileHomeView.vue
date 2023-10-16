@@ -16,15 +16,48 @@
                 <div class="text-white q-pt-none text-weight-bold" > 3,000</div>
             </div>
             <div class="q-pr-sm q-pt-none">
-                <q-btn @click="() => {toggleModal();setCurrentFormId('add_card')}" size="sm" unelevated no-caps text-color="blue" icon="add_circle" flat>New card</q-btn>
+                <!-- 
+                    Click on this button will trigger 2 functions, 
+                    one to set the formId, which will act as a decision maker 
+                    in the BaseModal Component component. It will make a call 
+                    to toggleModal function which will change the modal/dialog
+                    variable.
+                -->
+                <q-btn 
+                    @click="() => {toggleModal();setCurrentFormId('add_card')}"  
+                    size="sm" unelevated no-caps flat
+                    text-color="blue" icon="add_circle" 
+                >
+                    New card
+                </q-btn>
             </div>
         </div>
         <div class="q-pt-md" >
+            <!-- 
+                In this wrapper, there are four components,
+                1)  TabsItems -> This component renders the tabs (not the tab panels), 
+                    it takes list of tabs and the currentTab pointer. This component will 
+                    perform a list rendering on the tabs list and keep a track of the current 
+                    selected tab using currentTab pointer
+
+                2)  TabPanels -> This Component renders the panels for the tabs and shows the panel 
+                    for the currently selected Tab.
+                
+                3)  BaseModal -> This component renders the dialog/modal for the project. 
+                    Currently we use dialog/modal for 2 ops, for Add New Card form and for a 
+                    confirmation click while deleting a card
+                
+                4)  BottomSheet -> This Contains the Card Action List which have options like 
+                    freeze card, delete card and etc., and it has list of recent transaction. 
+                    This component aims to be a draggable, scrollable bottom sheet for the mobile 
+                    view
+             -->
             <TabsItems :tabs="tabs" :currentTab="currentTab" />
             <TabPanels />
             <BaseModal />
             <BottomSheet />
         </div>
+        <!-- This is the navbar for the mobile view, fixed at the bottom of the screen -->
         <q-card class=" row justify-center items-center mobile-nav q-px-md">
             <div style="flex:1;text-align:center" class="col justify-center items-end">
                 <q-icon style="font-size:25px;" name="img:logo.svg" />

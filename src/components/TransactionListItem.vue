@@ -1,4 +1,5 @@
 <template>
+    <!-- UI for Transaction Item shown in the Recent Transactions Expander -->
     <div class="row q-gutter-md" style="margin-top:5px;margin-bottom:10px;" >
         <div style="flex: 1;" class="row justify-start items-start " >
             <component :is="props.listItem.icon" />

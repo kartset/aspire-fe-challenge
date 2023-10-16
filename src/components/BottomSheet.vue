@@ -12,6 +12,7 @@
                         <CardActions />
                     </div>
                 </q-card-section>
+                <!-- List Rendering for Expansion Items -->
                 <q-card-section>
                     <div v-for="(item, i) in items" :key="i" class=" q-px-md q-py-sm">
                         <ExpansionItem :item="item" />

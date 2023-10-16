@@ -1,5 +1,9 @@
 import { computed, onMounted, onUnmounted, ref } from "vue"
 
+// This is a vue composable, which let us monitor the change in screen 
+// size and serve the home view regarding to it. This composable removes 
+// the event listner when the component where this composable is used is unmounted
+
 export const useBreakpoints = () => {
   const windowWidth = ref(window.innerWidth)
 

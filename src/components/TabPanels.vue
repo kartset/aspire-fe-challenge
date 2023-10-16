@@ -1,4 +1,5 @@
 <template>
+    <!-- Rendering Tabs Panerls -->
     <q-tab-panels
         v-model="currentTab"
         animated

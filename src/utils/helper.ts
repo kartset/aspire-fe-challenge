@@ -26,7 +26,10 @@ export const cardList:cardListProps = {
     jcb: /^(?:2131|1800|35\d{3})\d{11}$/
 }
 
-
+// While Entering the card number in the Add New Card form 
+// we are detecting the card type to show the card icon in 
+// the input field, this function combined with the object 
+// above helps us in detecting the card type
 export function detectCardType(number: string) {
     for(const key in cardList) {
         if(cardList[key as keyof cardListProps].test(number)) {

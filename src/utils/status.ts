@@ -1,0 +1,6 @@
+export enum STATUS {
+  NOT_STARTED = "NOT_STARTED",
+  LOADING = "LOADING",
+  SUCCESS = "SUCCESS",
+  FAILED = "FAILED",
+}

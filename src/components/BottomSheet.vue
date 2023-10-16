@@ -36,7 +36,7 @@ const { cardDetailsExpand, recentTransactionExpand } = storeToRefs(useExpansionS
 
 
 const $q = useQuasar()
-const drawerMinHeight = 275
+const drawerMinHeight = 250
 const drawerTopOffset = 100
 const drawerOpenRatioHalf = 50
 const drawerPos = ref(drawerMinHeight)

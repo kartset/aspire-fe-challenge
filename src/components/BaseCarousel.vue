@@ -10,7 +10,7 @@
         v-ripple
         @update:model-value="(id) => setCurrentCard(String(id))"
         padding
-        height="260px"
+        height="280px"
         class="text-white rounded-borders"
         :class="{'bg-brand':type == 'xs'}"
     >
